@@ -16,7 +16,6 @@ export class Details {
       .then(data => {
         artistInfoResult = JSON.parse(data.response);
         this.artist = artistInfoResult.artist;
-
       });
   }
 
