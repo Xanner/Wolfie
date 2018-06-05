@@ -2,13 +2,11 @@ import { HttpClient } from "../node_modules/aurelia-http-client";
 
 let client = new HttpClient();
 export class Details {
-  
   artistName = "";
   apiKey = "ebed450015bbddd54b246d1c2681a7f4";
 
-  artist;
+  artistList = [];
   bindingSpinnerSecond = 0;
-  
   artistGetInfo() {
     this.bindingSpinnerSecond = 1;
     let artistInfoResult;
@@ -18,10 +16,9 @@ export class Details {
       "&format=json")
       .then(data => {
         artistInfoResult = JSON.parse(data.response);
-        this.artist = artistInfoResult.artist;
+        this.artistList = artistInfoResult.artist;
         this.bindingSpinnerSecond = 0;
       });
-      
   }
 
   artistTopAlbums = [];
@@ -38,19 +35,20 @@ export class Details {
   }
 
   albumName = "";
-  content = [];
+  albumList = [];
   bindingSpinner = 0;
-
-  albumGetInfo(albumName){
+  albumGetInfo(albumName) {
     this.bindingSpinner = 1;
     this.albumName = albumName;
     let albumInfoResult;
-
-    client.get("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&" + 
-    "api_key=" + this.apiKey + "&artist=" + this.artistName + "&album=" + this.albumName + "&format=json")
+    client.get("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&" +
+      "api_key=" + this.apiKey +
+      "&artist=" + this.artistName +
+      "&album=" + this.albumName +
+      "&format=json")
       .then(data => {
         albumInfoResult = JSON.parse(data.response);
-        this.content = albumInfoResult;
+        this.albumList = albumInfoResult;
         this.bindingSpinner = 0;
       });
   }
