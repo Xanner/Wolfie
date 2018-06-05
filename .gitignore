@@ -25,6 +25,8 @@ Thumbs.db
 !.vscode/extensions.json
 .chrome/*
 
+package-lock.json
+
 # Dependencies
 node_modules
 
