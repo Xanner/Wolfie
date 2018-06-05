@@ -34,8 +34,10 @@ export class Details {
 
   albumName = "";
   content = [];
+  bindingSpinner = 0;
 
   albumGetInfo(albumName){
+    this.bindingSpinner = 1;
     this.albumName = albumName;
     let albumInfoResult;
 
@@ -44,6 +46,7 @@ export class Details {
       .then(data => {
         albumInfoResult = JSON.parse(data.response);
         this.content = albumInfoResult;
+        this.bindingSpinner = 0;
       });
   }
 

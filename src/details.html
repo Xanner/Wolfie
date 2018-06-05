@@ -23,27 +23,33 @@
     </div>
   </div>
 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-body">
-          <hr>
-          <h4>Name: ${content.album.name}</h4>
-          <hr>
-          <h4>Date published: ${content.album.wiki.published}</h4>
-          <hr>
-          <h4>Tracks</h4>
-          <ul repeat.for="track of content.album.tracks.track">
-            <li>${track.name}</li>
-          </ul>
-          <hr>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center" style="zoom: 7;" if.bind="bindingSpinner">
+          <i class="fa fa-spinner fa-spin fa-lg"></i>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn close" data-dismiss="modal">Close</button>
-        </div>
+        <hr>
+        <h4>Name: ${content.album.name}</h4>
+        <hr>
+        <h4>Date published: ${content.album.wiki.published}</h4>
+        <hr>
+        <h4>Tracks:</h4>
+        <ul repeat.for="track of content.album.tracks.track">
+          <li>${track.name}</li>
+        </ul>
+        <hr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn close" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
+
 
 </template>
 
