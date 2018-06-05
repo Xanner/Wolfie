@@ -1,0 +1,49 @@
+<template>
+  <div class="text-center">
+    <h2 class="text-center" style="font-size:100px; padding-top:50px;">${artistName}</h2>
+    <img src=${artist.image[4]["#text"]} alt="jpg not found" class="rounded-circle border img-fluid">
+
+    <div class="container" style="width:70%; font-style:italic; padding:5%;">
+      <h3>Biography</h3>
+      <hr> ${artist.bio.summary}
+      <hr>
+    </div>
+
+    <div class="container" style="width:35%; font-style:italic;">
+      <h3>Top Albums</h3>
+      <hr>
+      <ul repeat.for="album of artistTopAlbums" style="list-style:none;">
+        <li style="text-align:left;">
+          <img src=${album.image[1]["#text"]} alt="jpg not found" class="rounded-circle border img-fluid">
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" click.delegate="albumGetInfo(album.name)">${album.name}</button>
+          </img>
+        </li>
+      </ul>
+      <hr>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <hr>
+          <h4>Name: ${content.album.name}</h4>
+          <hr>
+          <h4>Date published: ${content.album.wiki.published}</h4>
+          <hr>
+          <h4>Tracks</h4>
+          <ul repeat.for="track of content.album.tracks.track">
+            <li>${track.name}</li>
+          </ul>
+          <hr>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
