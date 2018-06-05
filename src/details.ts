@@ -6,8 +6,11 @@ export class Details {
   artistName = "";
   apiKey = "ebed450015bbddd54b246d1c2681a7f4";
 
-  artist = [];
+  artist;
+  bindingSpinnerSecond = 0;
+  
   artistGetInfo() {
+    this.bindingSpinnerSecond = 1;
     let artistInfoResult;
     client.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo" +
       "&artist=" + this.artistName +
@@ -16,7 +19,9 @@ export class Details {
       .then(data => {
         artistInfoResult = JSON.parse(data.response);
         this.artist = artistInfoResult.artist;
+        this.bindingSpinnerSecond = 0;
       });
+      
   }
 
   artistTopAlbums = [];
@@ -60,9 +65,9 @@ export class Details {
 
   activate(params) {
     this.artistName = params.name;
-    this.hideSearchEngine();
     this.artistGetInfo();
     this.artistGetTopAlbums();
+    this.hideSearchEngine();
   }
 
   deactivate() {
