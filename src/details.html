@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <h2 class="text-center" style="font-size:100px; padding-top:50px;">${artistName}</h2>
-    <img src=${artist.image[4]["#text"]} alt="jpg not found" class="rounded-circle border img-fluid">
+    <img src=${artist.image[4]["#text"]} alt="jpg not found" class="rounded-circle border border-primary img-fluid">
 
     <div class="container" style="width:70%; font-style:italic; padding:5%;">
       <h3>Biography</h3>
@@ -14,7 +14,7 @@
       <hr>
       <ul repeat.for="album of artistTopAlbums" style="list-style:none;">
         <li style="text-align:left;">
-          <img src=${album.image[1]["#text"]} alt="jpg not found" class="rounded-circle border img-fluid">
+          <img src=${album.image[1]["#text"]} alt="jpg not found" class="rounded-circle border border-secondary img-fluid">
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" click.delegate="albumGetInfo(album.name)">${album.name}</button>
           </img>
         </li>

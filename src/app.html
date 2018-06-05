@@ -55,7 +55,7 @@
     current-page.bind: currentPage; page-size.bind: pageSize = 5; total-items.bind: totalItems;">
         <tr repeat.for="artist of $displayData">
           <td>
-            <img src=${artist.image[2]["#text"]} alt="jpg not found" class="rounded-circle border img-fluid">
+            <img src=${artist.image[2]["#text"]} alt="jpg not found" class="rounded-circle border border-primary img-fluid">
           </td>
           <td style="font-size:30px;">
             <a href="#/details/${artist.name}">${artist.name}</a>
