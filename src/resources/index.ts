@@ -3,6 +3,6 @@ import {FrameworkConfiguration} from 'aurelia-framework';
 
 export function configure(config: FrameworkConfiguration) {
   config.globalResources([PLATFORM.moduleName("app")]);
-  config.globalResources([PLATFORM.moduleName("details")]);
-  config.globalResources([PLATFORM.moduleName("index")]);
+  config.globalResources([PLATFORM.moduleName("../components/details/details")]);
+  config.globalResources([PLATFORM.moduleName("../components/home/index")]);
 }

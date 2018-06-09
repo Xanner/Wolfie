@@ -1,0 +1,67 @@
+<template>
+    <require from="bootstrap/dist/css/bootstrap.css"></require>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" role="navigation">
+    <a href="#" class="navbar-brand">
+      <i class="fa fa-home"></i>
+      <span>Home</span>
+    </a>
+  </nav>
+  <router-view></router-view>
+
+  <div id="searchEngine">
+    <div style="text-align: center">
+      <h1 style="padding-top:4%;">${message}</h1>
+      <input type="text" keyup.delegate="searchArtist()" value.bind="artistName" class="col-sm-4 form-control-lg" />
+    </div>
+
+    <div class="container-fluid" style="padding-top: 5%;">
+      <div class="row">
+        <div class="col-sm-9">
+          <aut-pagination current-page.bind="currentPage" page-size.bind="pageSize" total-items.bind="totalItems" pagination-size.bind="5"
+            boundary-links.bind="true">
+
+            <template replace-part="pagination">
+              <ul class="custom-pagination" hide.bind="hideSinglePage && totalPages === 1">
+                <li>
+                  <a aria-label="Previous" click.delegate="previousPage()" class-name.bind="currentPage === 1 ? 'disabled' : ''">
+                    <span aria-hidden="true">«</span>
+                  </a>
+                </li>
+
+                <li repeat.for="page of displayPages">
+                  <a click.delegate="selectPage(page.value)" class-name.bind="currentPage === page.value ? 'active' : ''">
+                    ${page.title}
+                  </a>
+                </li>
+
+                <li>
+                  <a aria-label="Next" click.delegate="nextPage()" class-name.bind="currentPage === totalPages ? 'disabled' : ''">
+                    <span aria-hidden="true">»</span>
+                  </a>
+                </li>
+              </ul>
+            </template>
+
+          </aut-pagination>
+        </div>
+      </div>
+
+      <div class="text-center" style="zoom: 7;" if.bind="bindingSpinner">
+        <i class="fa fa-spinner fa-spin fa-lg"></i>
+      </div>
+
+      <table class="table table-hover text-centered" aurelia-table="data.bind: artistsResult; display-data.bind: $displayData;
+    current-page.bind: currentPage; page-size.bind: pageSize = 5; total-items.bind: totalItems;">
+        <tr repeat.for="artist of $displayData">
+          <td>
+            <img src=${artist.image[2]["#text"]} alt="jpg not found" class="rounded-circle border border-primary img-fluid">
+          </td>
+          <td style="font-size:30px; text-align:left;">
+            <a href="#/details/${artist.name}">${artist.name}</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
