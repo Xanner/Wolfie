@@ -1,6 +1,7 @@
 import { HttpClient } from "aurelia-http-client";
 import { Router, RouterConfiguration } from "aurelia-router";
 import "../../style.css";
+import * as $ from "jquery";
 
 export class Index {
   router: Router;
@@ -13,8 +14,20 @@ export class Index {
     this.router = router;
   }
 
+  attached() {
+    var timer = null;
+      $('#searchBox').keydown(function(){
+            clearTimeout(timer); 
+            timer = setTimeout(wait, 500);
+      });
+
+      function wait(){
+        alert("wait for a sec");
+      }
+  }
+
   message = "Search your favorite artist!";
-  apiKey = "ebed450015bbddd54b246d1c2681a7f4"
+  apiKey = "ebed450015bbddd54b246d1c2681a7f4";
 
   bindingSpinner = 0;
   limitSize = 1000;
