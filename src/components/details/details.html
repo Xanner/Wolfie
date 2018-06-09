@@ -1,4 +1,6 @@
 <template>
+  <div if.bind="showItem">
+
   <div class="text-center" style="zoom: 7;" if.bind="bindingSpinnerSecond">
     <i class="fa fa-spinner fa-spin fa-lg"></i>
   </div>
@@ -26,6 +28,8 @@
       <hr>
     </div>
   </div>
+
+</div>
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">

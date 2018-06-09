@@ -1,6 +1,6 @@
 import { HttpClient } from "aurelia-http-client";
-import { Router, RouterConfiguration } from 'aurelia-router'
-import "../../style.css"
+import { Router, RouterConfiguration } from "aurelia-router";
+import "../../style.css";
 
 export class Index {
   router: Router;

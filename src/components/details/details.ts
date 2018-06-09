@@ -61,10 +61,12 @@ export class Details {
     }
   }
 
+  showItem = false;
   activate(params) {
     this.artistName = params.name;
     this.artistGetInfo();
     this.artistGetTopAlbums();
+    window.setTimeout(() => this.showItem = true, 2000);
     this.hideSearchEngine();
   }
 

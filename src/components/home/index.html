@@ -12,7 +12,7 @@
   <div id="searchEngine">
     <div style="text-align: center">
       <h1 style="padding-top:4%;">${message}</h1>
-      <input type="text" keyup.delegate="searchArtist()" value.bind="artistName" class="col-sm-4 form-control-lg" />
+      <input id="searchBox" type="text" keyup.delegate="searchArtist()" value.bind="artistName" class="col-sm-4 form-control-lg" />
     </div>
 
     <div class="container-fluid" style="padding-top: 5%;">
@@ -64,4 +64,6 @@
       </table>
     </div>
   </div>
+
 </template>
+
